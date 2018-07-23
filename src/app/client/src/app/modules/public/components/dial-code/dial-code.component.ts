@@ -114,7 +114,7 @@ export class DialCodeComponent implements OnInit, OnDestroy {
     this.videoInputDevices = this.codeReader.getVideoInputDevices();
     // tslint:disable-next-line:prefer-const
     let firstDeviceId =  this.videoInputDevices[0];
-    this.codeReader.decodeFromInputVideoDevice(firstDeviceId, 'video').then((result:any) => {
+    this.codeReader.decodeFromInputVideoDevice(firstDeviceId, 'video').then((result: any) => {
       // tslint:disable-next-line:prefer-const
       let results = result.text.split('/');
       if (results[results.length - 2] === 'dial') {
