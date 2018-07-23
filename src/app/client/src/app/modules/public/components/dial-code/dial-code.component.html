@@ -1,13 +1,43 @@
 <div [appTelemetryImpression]="telemetryImpression" class="ui grid">
   <div class="row">
-    <div class="six wide computer eleven wide mobile eight wide tablet column centered padding-top-10">
+    <div class="three wide computer eleven wide mobile eight wide tablet column centered padding-top-10">
       <div class="ui fluid icon input">
         <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="{{resourceService.frmelmnts?.prmpt?.searchContent}}"
           title="Search" />
         <i class="search icon dialcode-search-icon" (click)="navigateToSearch()"></i>
       </div>
     </div>
+    <h1>OR You can Search By</h1>
+    <div class="three wide computer eleven wide mobile eight wide tablet column centered padding-top-10">
+      <div class="ui fluid icon input">
+        <a class="ui primary button" (click)="showCamera = !showCamera;" id="startButton">
+            <i class="qrcode icon"></i> Scan QR Code 
+          </a>
+      </div>
+    </div>
   </div>
+  <div class="row" *ngIf="showCamera===true" >
+    <div class="six wide computer eleven wide mobile eight wide tablet column centered padding-top-10">
+      <div class="ui fluid icon input">
+        <div *ngIf="startCamera===true" class="overlay"> </div>
+          <div id="cameraCover">
+            <a class="ui primary button resetCameraB" *ngIf="startCamera===true" (click)="resetCamera(); startCamera = !startCamera;" id="resetButton">
+              <i class="redo alternate icon"></i> Reset Camera
+            </a>
+            <div class="screen">
+                <video class="" id="video">
+                </video>
+            </div>
+            <div *ngIf="startCamera===true" class="scan" id="scanLine"></div>
+            <div class="enableCameraMsg center aligned">
+                <a class="center" (click)="scanQRCode(); startCamera = !startCamera;" id="startButton">
+                  <i class="camera icon"></i> <br/>Start Camera
+                </a>
+            </div>
+           </div>
+      </div>
+    </div>
+  </div>  
   <div class="row">
     <div class="one wide column"></div>
     <div class="ten wide column">

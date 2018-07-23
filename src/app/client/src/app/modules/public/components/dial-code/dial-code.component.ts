@@ -3,6 +3,7 @@ import { ResourceService, ServerResponse, ToasterService, ConfigService, UtilSer
 import { Router, ActivatedRoute } from '@angular/router';
 import { SearchService, SearchParam } from '@sunbird/core';
 import * as _ from 'lodash';
+import { BrowserQRCodeReader, VideoInputDevice } from '@zxing/library';
 import { IInteractEventObject, IInteractEventEdata, IImpressionEventInput } from '@sunbird/telemetry';
 import { takeUntil } from 'rxjs/operators';
 import { Subject } from 'rxjs/Subject';
@@ -73,15 +74,62 @@ export class DialCodeComponent implements OnInit, OnDestroy {
   searchResults: Array<any>;
   public unsubscribe$ = new Subject<void>();
 
+  /**
+  * This variable helps to show and hide camera div.
+  * It is kept false by default
+  * Camera should only when user clicks on button by search by QR code
+  */
+  public showCamera = false;
+  /**
+  * This variable helps to show and hide the start camera button.
+  * It is kept false by default.
+  * Start button should disabled when user clicks on button start camera.
+  */
+  public startCamera = false;
+  /**
+  * This variable helps to read QR code.
+  */
+  public codeReader;
+  /**
+  * This variable stores all the video input devices active on machin.
+  * any data
+  */
+  public videoInputDevices: any;
 
-  constructor(resourceService: ResourceService, router: Router, activatedRoute: ActivatedRoute,
-    searchService: SearchService, toasterService: ToasterService, public configService: ConfigService,
-    public utilService: UtilService) {
+  constructor(resourceService?: ResourceService, router?: Router, activatedRoute?: ActivatedRoute,
+    searchService?: SearchService, toasterService?: ToasterService, public configService?: ConfigService,
+    public utilService?: UtilService) {
     this.resourceService = resourceService;
     this.router = router;
     this.activatedRoute = activatedRoute;
     this.searchService = searchService;
     this.toasterService = toasterService;
+    this.codeReader = new BrowserQRCodeReader();
+  }
+
+  resetCamera() {
+     this.codeReader.reset();
+  }
+  scanQRCode() {
+    this.videoInputDevices = this.codeReader.getVideoInputDevices();
+    // tslint:disable-next-line:prefer-const
+    let firstDeviceId =  this.videoInputDevices[0];
+    this.codeReader.decodeFromInputVideoDevice(firstDeviceId, 'video').then((result:any) => {
+      // tslint:disable-next-line:prefer-const
+      let results = result.text.split('/');
+      if (results[results.length - 2] === 'dial') {
+        this.dialCode = results[results.length - 1];
+        this.searchDialCode();
+        this.showCamera = false;
+        alert('QR code detected successfully...');
+        this.startCamera = false;
+        this.codeReader.reset();
+      } else {
+        console.log('Something went wrong....');
+      }
+    }).catch((err) => {
+          // console.error(err)
+    });
   }
 
   ngOnInit() {
