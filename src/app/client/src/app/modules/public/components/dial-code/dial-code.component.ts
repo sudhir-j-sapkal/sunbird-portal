@@ -121,7 +121,7 @@ export class DialCodeComponent implements OnInit, OnDestroy {
         this.dialCode = results[results.length - 1];
         this.searchDialCode();
         this.showCamera = false;
-        alert('QR code detected successfully...');
+        console.log('QR code detected successfully...');
         this.startCamera = false;
         this.codeReader.reset();
       } else {

@@ -1,7 +1,10 @@
-.ui.footer.segment {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: white;
-    z-index: 989898;
+.app-popup{
+  background-color: #fff;
 }
+.close{
+  color: #000000 !important;
+  float:right;
+}
+.modal{
+    transform: translateY(-50%);
+  }

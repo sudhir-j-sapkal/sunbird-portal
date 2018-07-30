@@ -45,33 +45,9 @@
 .dial-section-input {
   margin-top: 10em;
 }
-@media screen and  (min-width: 240px) and (max-width: 768px) {
-  .dial-section-input {
-    margin-top: 2em;
-  }
-}
-@media screen and  (min-width: 320px) and (max-width: 768px) {
-  .ui.header.dial-section-header-text {
-    padding-top: 4em !important;
-  }
-}
+
 .dial-code-section-bg {
   background: #fff;
-}
-@media only screen and (max-width: 767px) {
-  .ui.container.public-responvive-container {    
-    margin-right: 0 !important; 
-  } 
-}
-@media only screen and (min-width: 768px) {
-  .closeBtn-dial-code {
-    float:right;
-  }
-}
-@media screen and  (min-width: 320px) and (max-width: 768px) {
-  .ui.small.header.popUp-dial-code-header {
-    font-size: 1.2em;
-  }
 }
 .menu-public-header{
   border-top: 2px solid rgba(0,0,0,.13);
@@ -172,3 +148,23 @@
     top:0;
   }
 }
+@media only screen and (max-width: 767px) {
+  .ui.container.public-responvive-container {    
+    margin-right: 0 !important; 
+  }
+  .ui.small.header.popUp-dial-code-header {
+    font-size: 1.2em;
+  }
+  .ui.header.dial-section-header-text {
+    padding-top: 4em !important;
+  }
+  .dial-section-input {
+    margin-top: 2em;
+  }
+}
+@media only screen and (min-width: 768px) {
+  .closeBtn-dial-code {
+    float:right;
+  }
+}
+
