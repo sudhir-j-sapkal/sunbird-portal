@@ -39,4 +39,5 @@
 .get-page-background .ui.header,
 .get-page-background .ui.header .sub.header{
   color:#fff !important;
+  text-shadow: 1px 1px 1px #333
 }
