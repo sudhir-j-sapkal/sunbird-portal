@@ -1,26 +1,53 @@
-<div [appTelemetryImpression]="telemetryImpression" class="ui grid container">
-  <div class="row blue">
-      <div class="three wide computer eleven wide mobile eight wide tablet column">
-        <div class="ui fluid icon input">
-          <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="{{resourceService.frmelmnts?.prmpt?.searchContent}}"
-            title="Search" />
-          <i class="search icon dialcode-search-icon" (click)="navigateToSearch()"></i>
+<div [appTelemetryImpression]="telemetryImpression">
+
+  <div class="ui grid light-grey padded mobile only">
+
+    <div class="row padding-none box-shadow-1 stretched">
+        <div class="eight wide column padding-none">
+            <div class="padding-10">Scan QR code right from your mobile browser</div>
         </div>
-        
-      </div>
-      <h1>OR You can Search By</h1>
-      <div class="three wide computer eleven wide mobile eight wide tablet column centered padding-top-10">
-        <div class="ui fluid icon input">
-          <button class="ui primary button" (click)="showCamera = !showCamera;" id="startButton">
-             <i class="qrcode icon"></i> Scan QR Code 
-          </button>
+        <div class="four wide column blue-1 padding-none">
+          <div class="ui icon input fluid">
+            <button class="ui blue button btn-scan fluid margin-none br-0" (click)="showCamera = !showCamera;" id="startButton">
+               <i class="qrcode icon heading"></i> <br />
+               <small> Scan QR </small>
+            </button>
+          </div>
         </div>
+    </div>
+
+    <div class="row">
+        <div class="twelve wide column padding-10">
+            <div class="ui fluid icon input dial-search">
+              <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="{{resourceService.frmelmnts?.prmpt?.searchContent}}"
+                  title="Search" />
+              <i class="search icon dialcode-search-icon blue-1 cursor-pointer" (click)="navigateToSearch()"></i>
+            </div>
+        </div>
+    </div>
+
+  </div>
+
+  <div class="blue-1">
+    <div class="ui grid container tablet computer only margin-none">
+      <div class="row">
+        <div class="three wide computer  eight wide tablet column">
+          <div class="ui fluid icon input dial-search">
+            <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="{{resourceService.frmelmnts?.prmpt?.searchContent}}"
+              title="Search" />
+            <i class="search icon dialcode-search-icon blue-1 cursor-pointer" (click)="navigateToSearch()"></i>
+          </div>
+        </div>
+      </div> 
+    </div>
+  </div>
+  
+
+  <div class="ui grid container margin-none padding-10" *ngIf="!showLoader">
+      <div class="row padding-none">
+        <div class="twelve wide column">Search results for {{resourceService.frmelmnts?.lbl?.dialCode}} {{dialCode}}</div>
+        <div class="twelve wide column">{{searchResults.length}} results</div>
       </div>
-   </div> 
-  <div class="dial-code-section-bg" *ngIf="!showLoader">
-      <div class="strong large">Search results for {{resourceService.frmelmnts?.lbl?.dialCode}} {{dialCode}}</div>
-      <br/>
-      <div class="">{{searchResults.length}} results</div>
   </div>
   <hr style="width:100%"/>
   <div class="row" *ngIf="showCamera===true" >

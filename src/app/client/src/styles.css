@@ -2763,3 +2763,34 @@ iframe.iziModal-iframe {
   font-size: 1.4em;
   line-height: 1.35;
 }
+.blue-1{
+  background-color: #007AFF !important;
+}
+.light-grey{
+  background-color:#FAFAFA;
+}
+.box-shadow-1{
+  box-shadow: 0 3px 1px 0px rgba(0,0,0,0.3);
+}
+.br-0{
+  border-radius:0 !important;
+}
+.btn-scan{
+  background-color: transparent !important;
+  align-self: stretch !important;
+}
+.dial-search{
+  border-radius:20px;
+  overflow: hidden;
+  box-shadow: 0px 1px 1px 1px rgba(0,0,0,0.3);
+  max-width:320px;
+}
+.dial-search input[type="text"]{
+  border-radius:20px;
+  border:0;
+}
+.dial-search i.icon{
+  opacity: 1 !important;
+  width: 3.5em !important;
+  color: #fff;
+}
