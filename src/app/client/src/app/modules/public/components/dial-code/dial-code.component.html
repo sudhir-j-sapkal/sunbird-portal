@@ -29,8 +29,9 @@
   </div>
 
   <div class="blue-1">
-    <div class="ui grid container tablet computer only margin-none">
+    <div class="ui grid tablet computer only margin-none">
       <div class="row">
+        <div class="one wide tablet computer only column"></div>
         <div class="three wide computer  eight wide tablet column">
           <div class="ui fluid icon input dial-search">
             <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="{{resourceService.frmelmnts?.prmpt?.searchContent}}"
@@ -38,15 +39,21 @@
             <i class="search icon dialcode-search-icon blue-1 cursor-pointer" (click)="navigateToSearch()"></i>
           </div>
         </div>
+        <div class="one wide tablet computer only column"></div>
       </div> 
     </div>
   </div>
   
 
-  <div class="ui grid container margin-none padding-10" *ngIf="!showLoader">
+  <div class="ui grid margin-none padding-10" *ngIf="!showLoader">
       <div class="row padding-none">
-        <div class="twelve wide column">Search results for {{resourceService.frmelmnts?.lbl?.dialCode}} {{dialCode}}</div>
-        <div class="twelve wide column">{{searchResults.length}} results</div>
+        <div class="one wide tablet computer only column"></div>
+        <div class="ten wide column">
+          Search results for {{resourceService.frmelmnts?.lbl?.dialCode}} {{dialCode}}
+          <br/>
+          {{searchResults.length}} results
+        </div>
+        <div class="one wide tablet computer only column"></div>
       </div>
   </div>
   <hr style="width:100%"/>

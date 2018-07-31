@@ -2787,8 +2787,10 @@ iframe.iziModal-iframe {
 .dial-search{
   border-radius:20px;
   overflow: hidden;
-  max-width:320px;
   box-shadow: 0px 3px 6px -1px rgba(0,0,0,0.75);
+}
+.get-page-background .dial-search{
+  max-width:320px;
 }
 .dial-search input[type="text"]{
   border-radius:20px;
