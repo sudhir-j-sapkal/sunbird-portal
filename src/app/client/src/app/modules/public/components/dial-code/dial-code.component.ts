@@ -112,12 +112,10 @@ export class DialCodeComponent implements OnInit, OnDestroy {
   }
   scanQRCode() {
     this.videoInputDevices = this.codeReader.getVideoInputDevices();
-    // tslint:disable-next-line:prefer-const
-    let firstDeviceId =  this.videoInputDevices[0];
+    const firstDeviceId =  this.videoInputDevices[0];
     this.codeReader.decodeFromInputVideoDevice(firstDeviceId, 'video').then((result: any) => {
-      // tslint:disable-next-line:prefer-const
-      let results = result.text.split('/');
-      if (results[results.length - 2] === 'dial') {
+    const results = result.text.split('/');
+    if (results[results.length - 2] === 'dial') {
         this.dialCode = results[results.length - 1];
         this.searchDialCode();
         this.showCamera = false;
@@ -128,15 +126,32 @@ export class DialCodeComponent implements OnInit, OnDestroy {
         console.log('Something went wrong....');
       }
     }).catch((err) => {
-          // console.error(err)
+      console.log('Error here...');
     });
+  }
+
+  getCookie(cname) {
+    const name = cname + '=';
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
   }
 
   ngOnInit() {
     this.instanceName = this.resourceService.instance;
-    if (sessionStorage.getItem('showpopup')) {
-      this.showpopup = sessionStorage.getItem('showpopup');
+    if (this.getCookie('showpopup')) {
+      this.showpopup = this.getCookie('showpopup');
     }
+
     this.activatedRoute.params.subscribe(params => {
       this.searchResults = [];
       this.searchKeyword = this.dialCode = params.dialCode;

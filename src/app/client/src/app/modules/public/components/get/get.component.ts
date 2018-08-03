@@ -32,7 +32,9 @@ export class GetComponent implements OnInit {
   public router: Router;
 
 
-  constructor(resourceService: ResourceService, router: Router, public activatedRoute: ActivatedRoute) {
+  constructor(resourceService: ResourceService,
+              router: Router,
+              public activatedRoute: ActivatedRoute) {
     this.resourceService = resourceService;
     this.router = router;
   }
@@ -50,9 +52,26 @@ export class GetComponent implements OnInit {
         subtype: this.activatedRoute.snapshot.data.telemetry.subtype
       }
     };
-    if (sessionStorage.getItem('showpopup')) {
-      this.showpopup = sessionStorage.getItem('showpopup');
+
+    if (this.getCookie('showpopup')) {
+      this.showpopup = this.getCookie('showpopup');
     }
+  }
+
+  getCookie(cname) {
+    const name = cname + '=';
+    const decodedCookie = decodeURIComponent(document.cookie);
+    const ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) === ' ') {
+            c = c.substring(1);
+        }
+        if (c.indexOf(name) === 0) {
+            return c.substring(name.length, c.length);
+        }
+    }
+    return '';
   }
 
   public navigateToSearch() {
