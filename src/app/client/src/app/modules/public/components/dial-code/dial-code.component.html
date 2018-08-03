@@ -109,4 +109,4 @@
       <div class="one wide column"></div>
   </div>
 </div>
-<app-public-footer [instanceName]="instanceName"></app-public-footer>
+<app-public-footer *ngIf="showpopup==='true'" [instanceName]="instanceName"></app-public-footer>

@@ -24,7 +24,7 @@ appFooter = true;
   */
   public tenantService: TenantService;
 
-  constructor(public resourceService: ResourceService,  tenantService: TenantService) { 
+  constructor(public resourceService: ResourceService,  tenantService: TenantService) {
     this.tenantService = tenantService;
   }
 
@@ -36,6 +36,12 @@ appFooter = true;
         }
       }
     );
+  }
+
+  setPOPStorage() {
+    if (!sessionStorage.getItem('showpopup')) {
+      sessionStorage.setItem('showpopup', 'false');
+    }
   }
 
 }

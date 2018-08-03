@@ -24,6 +24,8 @@ export class GetComponent implements OnInit {
    * used to store searched keyword
    */
   public searchKeyword;
+  public showpopup = 'true';
+
   /**
   * To navigate to other pages
    */
@@ -48,6 +50,9 @@ export class GetComponent implements OnInit {
         subtype: this.activatedRoute.snapshot.data.telemetry.subtype
       }
     };
+    if (sessionStorage.getItem('showpopup')) {
+      this.showpopup = sessionStorage.getItem('showpopup');
+    }
   }
 
   public navigateToSearch() {
