@@ -11,7 +11,7 @@
         </div>
       </h1>
       <div class="ui fluid icon input dial-section-input">
-                <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="Search for content" title="Search"/>
+                <input type="text" name="search" (keyup.enter)="navigateToSearch()" [(ngModel)]="searchKeyword" placeholder="{{resourceService.frmelmnts?.prmpt?.searchDialCode}}" title="Search"/>
                 <i class="search icon dialcode-search-icon" (click)="navigateToSearch()"></i>
         </div>
     </div>
