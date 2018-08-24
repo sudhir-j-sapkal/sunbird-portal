@@ -8,3 +8,12 @@
 .modal{
     transform: translateY(-50%);
   }
+.mobileAppPopup{
+  font-size:14px !important;
+}
+.mobileAppPopup small{
+  font-size:12px !important;
+  color: #999;
+  line-height:1;
+  display: block;
+}

@@ -1,44 +1,47 @@
- <!-- footer -->
-<div *ngIf="appFooter" class="ui dimmer modals page transition active mobile only">
-  <div class="ui tiny modal transition active ">
-      <div class="header">
-        <div class="ui grid">
-          <div class="two wide column">
-              <div class="ui image margin-right-10">
-                  <img src="{{logo}}" alt="{{instanceName}}">
-              </div>
-          </div>
-          <div class="ten wide column">
-              <div>
-                 <span class="capitalize-text">{{instanceName}}</span> <br/>
-                  <small>Free</small>
-                  <small>Available on Play store.</small>
-              </div>
-          </div>
+<div *ngIf="appFooter">
 
+  <div class="ui grid middle aligned mobile only mobileAppPopup">
+    <div class="ui dimmer modals page transition active">
+      <div class="ui tiny modal transition active ">
+
+        <div class="header">
+          <div class="ui grid">
+            <div class="three wide column">
+              <div class="ui image margin-right-10">
+                <img src="{{logo}}" alt="{{instanceName}}">
+              </div>
+            </div>
+            <div class="nine wide column">
+              <div class="ui header">
+                  <p>{{instanceName}}</p>
+                  <p>Free</p>
+                  <p>Available on Play store.</p>
+              </div>
+            </div>
+          </div>
         </div>
-        
-        
-        
-      </div>
-      <div class="content">
-            <span>
-              {{resourceService.frmelmnts?.lbl?.downloadThe}} 
-              <span class="capitalize-text">{{instanceName}} {{resourceService.frmelmnts?.lbl?.app}}</span> 
-              <span class="sub header padding-top-5"> 
-                {{resourceService.frmelmnts?.lbl?.publicFooterGetAccess}}
-              </span>
+
+        <div class="content">
+          <span>
+            {{resourceService.frmelmnts?.lbl?.downloadThe}} 
+            <span class="capitalize-text">{{instanceName}} {{resourceService.frmelmnts?.lbl?.app}}</span> 
+            <span class="sub header padding-top-5"> 
+              {{resourceService.frmelmnts?.lbl?.publicFooterGetAccess}}
             </span>
-           <!-- <div class="ui tiny image">
-              <img src="https://play.google.com/intl/en_us/badges/images/badge_new.png">
-            </div>-->
+          </span>
+        </div>
+
+        <div class="actions">
+          <a href="app" class="ui positive button">
+            INSTALL APP
+          </a>
+          <button class="ui positive basic button" (click)="appFooter=false">
+            VIEW IN BROWSER
+          </button>
+        </div>
+
       </div>
-      <div class="actions">
-        <a href="app" class="ui positive button">
-          INSTALL APP
-        </a>
-        <button class="ui positive basic button" (click)="appFooter=false">
-          VIEW IN BROWSER
-        </button>
-      </div>
+    </div>
+  </div>
+
 </div>
