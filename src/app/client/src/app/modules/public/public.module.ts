@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CoreModule } from '@sunbird/core';
 import {
@@ -32,6 +32,7 @@ import { BadgingModule } from '@sunbird/badge';
     DeviceDetectorModule,
     BadgingModule
   ],
+  schemas : [CUSTOM_ELEMENTS_SCHEMA],
   declarations: [LandingPageComponent, SignupComponent, GetComponent, DialCodeComponent,
     PublicFooterComponent, PublicContentPlayerComponent, PublicCollectionPlayerComponent],
   providers: [SignupService, PublicPlayerService, DeviceDetectorService, SignupGuard, LandingpageGuard]
